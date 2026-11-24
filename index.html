@@ -5,7 +5,13 @@
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>ELEVEX Apps · Apps we're building. Try them and tell us what you think.</title>
 <meta name="description" content="Some of the apps ELEVEX is building. Try them in your browser and tell us what you think, or join the Google Play tester list.">
-<link rel="icon" href="img/logo.png">
+<link rel="icon" href="/favicon.ico" sizes="any">
+<link rel="icon" type="image/png" sizes="32x32" href="img/favicon-32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="img/favicon-16.png">
+<link rel="apple-touch-icon" href="img/apple-touch-icon.png">
+<link rel="manifest" href="manifest.webmanifest">
+<meta name="theme-color" content="#070d1a">
+<meta property="og:image" content="https://elevexapps.elevex.digital/img/icon-1024.png">
 <meta property="og:title" content="ELEVEX Apps">
 <meta property="og:description" content="Some of the apps we're building. Try them and let us know what you think.">
 <meta property="og:type" content="website">
@@ -18,6 +24,9 @@ a{color:inherit}
 main{max-width:760px;margin:0 auto;padding:28px 18px 56px}
 header{text-align:center;padding:12px 0 8px}
 header img{height:34px;width:auto;max-width:70%}
+.topnav{display:flex;justify-content:center;gap:18px;margin:0 0 16px;font-size:14px;font-weight:600}
+.topnav a{text-decoration:none;color:var(--muted);padding:6px 12px;border:1px solid var(--line);border-radius:999px}
+.topnav a:hover{color:#dbe8ff;border-color:var(--electric)}
 .eyebrow{margin:22px 0 0;font-size:12px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:var(--electric)}
 h1{font-size:clamp(28px,6vw,40px);line-height:1.12;margin:10px 0 12px}
 .lead{color:var(--muted);max-width:560px;margin:0 auto;font-size:17px}
@@ -57,7 +66,8 @@ footer a{color:#9fb0c8}
 <body>
 <main>
 <header>
-  <img src="img/elevex-wordmark.png" alt="ELEVEX">
+  <nav class="topnav" aria-label="ELEVEX"><a href="https://elevex.digital/?utm_source=elevexapps&amp;utm_medium=hub&amp;utm_campaign=apps">&larr; ELEVEX site</a><a href="https://elevex.digital/work?utm_source=elevexapps&amp;utm_medium=hub&amp;utm_campaign=apps">Our work</a></nav>
+  <a href="https://elevex.digital/?utm_source=elevexapps&amp;utm_medium=hub&amp;utm_campaign=apps"><img src="img/elevex-wordmark.png" alt="ELEVEX"></a>
   <p class="eyebrow">ELEVEX Apps</p>
   <h1>Some of the apps we're building.</h1>
   <p class="lead">Try them in your browser and let us know what you think. Your feedback shapes what we build next.</p>
@@ -150,7 +160,7 @@ footer a{color:#9fb0c8}
 </section>
 
 <footer>
-  <p>ELEVEX Apps · <a href="https://elevex.digital">elevex.digital</a></p>
+  <p>ELEVEX Apps · <a href="https://elevex.digital/?utm_source=elevexapps&amp;utm_medium=hub&amp;utm_campaign=apps">elevex.digital</a></p>
 </footer>
 </main>
 
