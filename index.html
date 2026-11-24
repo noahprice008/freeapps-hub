@@ -1,29 +1,184 @@
-<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>FreeApps by ELEVEX · 4 free apps, no sign-up</title>
-<meta name="description" content="Four free apps. No sign-up. Use them free on the web now; App Store and Google Play coming soon.">
-<link rel="icon" href="img/logo.png"><style>
-*{box-sizing:border-box}body{margin:0;font:16px/1.45 system-ui,-apple-system,Segoe UI,Roboto,sans-serif;background:#0a1220;color:#fff}
-main{max-width:520px;margin:0 auto;padding:28px 18px 40px}header{text-align:center}header img{width:96px;height:96px;border-radius:50%}
-h1{font-size:28px;margin:12px 0 4px}header p{margin:0;color:#b8c4d6}
-.card{border-radius:20px;padding:20px;margin:18px 0}.card h2{margin:0 0 6px;font-size:22px}.card p{margin:6px 0}
-.tags b{font-size:12px;padding:4px 9px;border-radius:99px;border:1px solid currentColor;letter-spacing:.04em}
-.open{display:block;text-align:center;text-decoration:none;font-weight:800;padding:14px;border-radius:14px;margin:14px 0 10px}
-.soon{display:flex;gap:8px;flex-wrap:wrap}.soon span{font-size:12px;padding:5px 10px;border-radius:8px;background:rgba(0,0,0,.35);color:#fff}
-small{display:block;margin-top:10px;opacity:.8}footer{text-align:center;color:#8794a8;font-size:13px}
-.tip{background:#13203a;border-radius:14px;padding:12px 14px;font-size:14px;color:#c9d4e6}</style></head><body><main>
-<header><img src="img/logo.png" alt="FreeApps logo"><h1>4 free apps. No sign-up.</h1><p>Use them free on the web now. App Store and Google Play coming soon.</p></header>
-<article class="card" style="background:#0b2540;color:#fff"><h2>Travel Safety Watch</h2><p>Weather, local news and official travel advice for 200+ places, in one view.</p>
-<p class="tags"><b style="background:#2dd4bf;color:#111">FREE</b> <b>NO SIGN-UP</b></p>
-<a class="open" style="background:#2dd4bf;color:#111" href="https://travelsafetywatch.com/?utm_source=tiktok&utm_medium=bio&utm_campaign=freeapps">Open it free now</a>
-<p class="soon"><span>App Store · coming soon</span><span>Google Play · coming soon</span></p><small>Independent · not a government service · check official sources</small></article><article class="card" style="background:#14110a;color:#fff"><h2>TravelPlay</h2><p>Free puzzle and word games made for layovers, flights and waiting rooms. Works offline.</p>
-<p class="tags"><b style="background:#f5c542;color:#111">FREE</b> <b>NO SIGN-UP</b></p>
-<a class="open" style="background:#f5c542;color:#111" href="https://travelplay.fun/?utm_source=tiktok&utm_medium=bio&utm_campaign=freeapps">Open it free now</a>
-<p class="soon"><span>App Store · coming soon</span><span>Google Play · coming soon</span></p></article><article class="card" style="background:#0f5f66;color:#fff"><h2>Daywall</h2><p>Log your shifts, see weekly pay and cash flow. Your data stays on your device.</p>
-<p class="tags"><b style="background:#7ff0e0;color:#111">FREE</b> <b>NO SIGN-UP</b></p>
-<a class="open" style="background:#7ff0e0;color:#111" href="https://daywall.elevex.digital/?utm_source=tiktok&utm_medium=bio&utm_campaign=freeapps">Open it free now</a>
-<p class="soon"><span>App Store · coming soon</span><span>Google Play · coming soon</span></p></article><article class="card" style="background:#f3e6d3;color:#3a2418"><h2>My Ikigai Map</h2><p>Answer four questions (about 10 minutes) and see where passion, skill, need and pay meet.</p>
-<p class="tags"><b style="background:#b5543a;color:#111">FREE</b> <b>NO SIGN-UP</b></p>
-<a class="open" style="background:#b5543a;color:#111" href="https://ikigai.elevex.digital/?utm_source=tiktok&utm_medium=bio&utm_campaign=freeapps">Open it free now</a>
-<p class="soon"><span>App Store · coming soon</span><span>Google Play · coming soon</span></p></article>
-<p class="tip"><b>Tip:</b> open an app, then use your browser's “Add to Home Screen” to keep it like a regular app.</p>
-<footer><p>FreeApps by ELEVEX · <a style="color:#8794a8" href="https://elevex.digital">elevex.digital</a></p></footer></main></body></html>
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>ELEVEX Apps · Apps we're building. Try them and tell us what you think.</title>
+<meta name="description" content="Some of the apps ELEVEX is building. Try them in your browser and tell us what you think, or join the Google Play tester list.">
+<link rel="icon" href="img/logo.png">
+<meta property="og:title" content="ELEVEX Apps">
+<meta property="og:description" content="Some of the apps we're building. Try them and let us know what you think.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://elevexapps.elevex.digital">
+<style>
+:root{--bg:#070d1a;--panel:#0e1729;--line:#1d2a44;--text:#eef3fb;--muted:#9fb0c8;--electric:#3b82f6}
+*{box-sizing:border-box}
+body{margin:0;font:16px/1.5 Inter,system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;background:var(--bg);color:var(--text)}
+a{color:inherit}
+main{max-width:760px;margin:0 auto;padding:28px 18px 56px}
+header{text-align:center;padding:12px 0 8px}
+header img{height:34px;width:auto;max-width:70%}
+.eyebrow{margin:22px 0 0;font-size:12px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:var(--electric)}
+h1{font-size:clamp(28px,6vw,40px);line-height:1.12;margin:10px 0 12px}
+.lead{color:var(--muted);max-width:560px;margin:0 auto;font-size:17px}
+.cta-row{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin-top:22px}
+.btn{display:inline-block;text-decoration:none;font-weight:700;padding:12px 20px;border-radius:999px;border:1px solid var(--electric);background:rgba(59,130,246,.16);color:#dbe8ff}
+.btn.ghost{background:transparent;border-color:var(--line);color:var(--muted)}
+.btn:hover{background:rgba(59,130,246,.28)}
+.grid{display:grid;gap:14px;margin:34px 0 10px}
+@media(min-width:640px){.grid{grid-template-columns:1fr 1fr}}
+.app{background:var(--panel);border:1px solid var(--line);border-radius:20px;padding:18px;display:flex;flex-direction:column}
+.app-top{display:flex;gap:14px;align-items:center}
+.app-top img{width:56px;height:56px;border-radius:14px;flex:none;background:#fff1}
+.app h2{margin:0;font-size:20px}
+.kind{margin:2px 0 0;font-size:12px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--muted)}
+.app p.desc{margin:12px 0 14px;color:#c4d0e3;font-size:15px;flex:1}
+.try{display:block;text-align:center;text-decoration:none;font-weight:700;padding:11px;border-radius:12px;background:var(--accent,var(--electric));color:#06101f}
+.note{margin:10px 0 0;font-size:12.5px;color:var(--muted)}
+section.tester{margin:40px 0 0;background:linear-gradient(160deg,#0f1c35,#0b1324);border:1px solid #274170;border-radius:24px;padding:26px 22px}
+section.tester h2{margin:0 0 6px;font-size:24px}
+section.tester p{margin:0 0 16px;color:#c4d0e3}
+form{display:grid;gap:10px}
+label{font-size:13px;font-weight:700;color:var(--muted)}
+input[type=email],input[type=text],select{width:100%;padding:13px 14px;border-radius:12px;border:1px solid var(--line);background:#091122;color:var(--text);font:inherit}
+input:focus,select:focus{outline:2px solid var(--electric);outline-offset:1px}
+.checks{display:flex;flex-wrap:wrap;gap:8px}
+.checks label{display:flex;gap:6px;align-items:center;font-weight:600;color:#c4d0e3;border:1px solid var(--line);padding:7px 12px;border-radius:999px;cursor:pointer}
+button{font:inherit;font-weight:800;padding:14px;border-radius:12px;border:0;background:var(--electric);color:#fff;cursor:pointer}
+button[disabled]{opacity:.6}
+.hp{position:absolute;left:-9999px;opacity:0}
+#msg{min-height:22px;margin:4px 0 0;font-size:14px}
+.ok{color:#5eead4}.err{color:#fca5a5}
+.tip{margin:26px 0 0;font-size:14px;color:var(--muted);text-align:center}
+footer{margin-top:34px;text-align:center;color:#7d8ca5;font-size:13px}
+footer a{color:#9fb0c8}
+</style>
+</head>
+<body>
+<main>
+<header>
+  <img src="img/elevex-wordmark.png" alt="ELEVEX">
+  <p class="eyebrow">ELEVEX Apps</p>
+  <h1>Some of the apps we're building.</h1>
+  <p class="lead">Try them in your browser and let us know what you think. Your feedback shapes what we build next.</p>
+  <div class="cta-row">
+    <a class="btn" href="#apps">Browse the apps</a>
+    <a class="btn ghost" href="#tester">Become a tester</a>
+  </div>
+</header>
+
+<div class="grid" id="apps">
+
+<article class="app" style="--accent:#2dd4bf">
+  <div class="app-top"><img src="img/apps/travel-safety-watch.webp" alt="" width="56" height="56">
+    <div><h2>Travel Safety Watch</h2><p class="kind">Travel · Safety alerts</p></div></div>
+  <p class="desc">Weather, local news and official travel advice for destinations worldwide, in one calm view.</p>
+  <a class="try" href="https://travelsafetywatch.com/?utm_source=elevexapps&utm_medium=hub&utm_campaign=apps">Try it</a>
+  <p class="note">Independent. Not a government service. Check official sources.</p>
+</article>
+
+<article class="app" style="--accent:#c6ff3d">
+  <div class="app-top"><img src="img/apps/scenzy.webp" alt="" width="56" height="56">
+    <div><h2>Scenzy</h2><p class="kind">Social · Local scenes</p></div></div>
+  <p class="desc">See where it's happening. Spot a scene, share it, and see what others nearby are seeing. Built for singles and travellers.</p>
+  <a class="try" href="https://getscenzy.com/?utm_source=elevexapps&utm_medium=hub&utm_campaign=apps">Try it</a>
+  <p class="note">18+. Early version. Feedback welcome.</p>
+</article>
+
+<article class="app" style="--accent:#a78bfa">
+  <div class="app-top"><img src="img/apps/mywall.webp" alt="" width="56" height="56">
+    <div><h2>MyWall</h2><p class="kind">Social · Private wall</p></div></div>
+  <p class="desc">Your private social wall. Share moments, plans and daily wins on a feed that is yours alone. Everything stays on your device.</p>
+  <a class="try" href="https://mywall.elevex.digital/?utm_source=elevexapps&utm_medium=hub&utm_campaign=apps">Try it</a>
+</article>
+
+<article class="app" style="--accent:#7ff0e0">
+  <div class="app-top"><img src="img/apps/daywall.webp" alt="" width="56" height="56">
+    <div><h2>Daywall</h2><p class="kind">Productivity · Work and money</p></div></div>
+  <p class="desc">Log shifts, see weekly pay and cash flow, and keep your calendar in one place. Your data stays on your device.</p>
+  <a class="try" href="https://daywall.elevex.digital/?utm_source=elevexapps&utm_medium=hub&utm_campaign=apps">Try it</a>
+</article>
+
+<article class="app" style="--accent:#f5c542">
+  <div class="app-top"><img src="img/apps/travelplay.webp" alt="" width="56" height="56">
+    <div><h2>TravelPlay</h2><p class="kind">Games · For travellers</p></div></div>
+  <p class="desc">Original puzzle and word games for flights, trains and layovers. Works offline once installed.</p>
+  <a class="try" href="https://travelplay.fun/?utm_source=elevexapps&utm_medium=hub&utm_campaign=apps">Try it</a>
+  <p class="note">18+.</p>
+</article>
+
+<article class="app" style="--accent:#f0a58f">
+  <div class="app-top"><img src="img/apps/ikigai.webp" alt="" width="56" height="56">
+    <div><h2>My Ikigai Map</h2><p class="kind">Tools · Self-discovery</p></div></div>
+  <p class="desc">A guided, interactive map of passion, skill, need and pay. Answer four questions and get a result you can share.</p>
+  <a class="try" href="https://ikigai.elevex.digital/?utm_source=elevexapps&utm_medium=hub&utm_campaign=apps">Try it</a>
+</article>
+
+</div>
+
+<p class="tip">Tip: open an app, then use your browser's “Add to Home Screen” to keep it like a regular app.</p>
+
+<section class="tester" id="tester">
+  <h2>Want to be a tester on Google Play?</h2>
+  <p>Send us your email and tell us which apps interest you. We'll be in touch with how to join. There's no charge and no obligation.</p>
+  <form id="f" novalidate>
+    <div>
+      <label for="email">Email used for Google Play</label>
+      <input id="email" name="email" type="email" inputmode="email" autocomplete="email" placeholder="you@example.com" required>
+    </div>
+    <div>
+      <label for="name">First name (optional)</label>
+      <input id="name" name="name" type="text" autocomplete="given-name">
+    </div>
+    <div>
+      <label>Which apps?</label>
+      <div class="checks">
+        <label><input type="checkbox" name="apps" value="Travel Safety Watch"> Travel Safety Watch</label>
+        <label><input type="checkbox" name="apps" value="Magen Alert"> Magen Alert</label>
+        <label><input type="checkbox" name="apps" value="Scenzy"> Scenzy</label>
+        <label><input type="checkbox" name="apps" value="MyWall"> MyWall</label>
+        <label><input type="checkbox" name="apps" value="Daywall"> Daywall</label>
+        <label><input type="checkbox" name="apps" value="TravelPlay"> TravelPlay</label>
+        <label><input type="checkbox" name="apps" value="My Ikigai Map"> My Ikigai Map</label>
+      </div>
+    </div>
+    <input class="hp" type="text" name="company" tabindex="-1" autocomplete="off" aria-hidden="true">
+    <button type="submit" id="go">Join the tester list</button>
+    <p id="msg" role="status" aria-live="polite"></p>
+  </form>
+  <p class="note" style="margin:6px 0 0">We only use your email to contact you about testing. Prefer to write instead? <a href="mailto:info@elevex.digital?subject=Tester%20request">info@elevex.digital</a></p>
+</section>
+
+<footer>
+  <p>ELEVEX Apps · <a href="https://elevex.digital">elevex.digital</a></p>
+</footer>
+</main>
+
+<script>
+(function(){
+  var ENDPOINT = "https://n8n.elevex.digital/webhook/elevexapps-testers";
+  var f = document.getElementById("f"), msg = document.getElementById("msg"), go = document.getElementById("go");
+  f.addEventListener("submit", function(e){
+    e.preventDefault();
+    msg.className = ""; msg.textContent = "";
+    var email = f.email.value.trim();
+    if(!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(email)){ msg.className="err"; msg.textContent="Please enter a valid email address."; return; }
+    var apps = Array.prototype.map.call(f.querySelectorAll('input[name=apps]:checked'), function(i){return i.value;});
+    go.disabled = true; go.textContent = "Sending…";
+    fetch(ENDPOINT, {
+      method: "POST",
+      headers: {"Content-Type":"application/json"},
+      body: JSON.stringify({email: email, name: f.name.value.trim(), apps: apps, company: f.company.value, source: "elevexapps-hub", page: location.href})
+    }).then(function(r){
+      if(!r.ok) throw new Error("bad status");
+      f.reset(); msg.className="ok"; msg.textContent="Thank you. You're on the list. We'll email you with next steps.";
+      go.textContent = "Joined";
+    }).catch(function(){
+      msg.className="err"; msg.textContent="Something went wrong. Please try again, or email info@elevex.digital.";
+      go.disabled = false; go.textContent = "Join the tester list";
+    });
+  });
+})();
+</script>
+</body>
+</html>
