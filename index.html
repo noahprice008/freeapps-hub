@@ -16,6 +16,13 @@
 <meta property="og:description" content="Some of the apps we're building. Try them and let us know what you think.">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://elevexapps.elevex.digital">
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-MQXKF515ZZ"></script>
+<script>
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'G-MQXKF515ZZ');
+</script>
 <style>
 :root{--bg:#070d1a;--panel:#0e1729;--line:#1d2a44;--text:#eef3fb;--muted:#9fb0c8;--electric:#3b82f6}
 *{box-sizing:border-box}
@@ -181,7 +188,7 @@ footer a{color:#9fb0c8}
       body: JSON.stringify({email: email, name: f.name.value.trim(), apps: apps, company: f.company.value, source: "elevexapps-hub", page: location.href})
     }).then(function(r){
       if(!r.ok) throw new Error("bad status");
-      f.reset(); msg.className="ok"; msg.textContent="Thank you. You're on the list. We'll email you with next steps.";
+      f.reset(); try{gtag("event","generate_lead",{method:"tester_form"});}catch(e){} msg.className="ok"; msg.textContent="Thank you. You're on the list. We'll email you with next steps.";
       go.textContent = "Joined";
     }).catch(function(){
       msg.className="err"; msg.textContent="Something went wrong. Please try again, or email info@elevex.digital.";
@@ -189,6 +196,7 @@ footer a{color:#9fb0c8}
     });
   });
 })();
+document.addEventListener("click",function(e){var a=e.target.closest&&e.target.closest("a.try");if(a){try{gtag("event","select_content",{content_type:"app",item_id:a.href.split("?")[0]});}catch(x){}}});
 </script>
 </body>
 </html>
