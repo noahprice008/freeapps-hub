@@ -37,6 +37,7 @@ header img{height:34px;width:auto;max-width:70%}
 .eyebrow{margin:22px 0 0;font-size:12px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:var(--electric)}
 h1{font-size:clamp(28px,6vw,40px);line-height:1.12;margin:10px 0 12px}
 .lead{color:var(--muted);max-width:560px;margin:0 auto;font-size:17px}
+#phone-scene{height:clamp(300px,80vw,600px);margin:14px auto 0;max-width:640px;pointer-events:none}
 .cta-row{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin-top:22px}
 .btn{display:inline-block;text-decoration:none;font-weight:700;padding:12px 20px;border-radius:999px;border:1px solid var(--electric);background:rgba(59,130,246,.16);color:#dbe8ff}
 .btn.ghost{background:transparent;border-color:var(--line);color:var(--muted)}
@@ -82,6 +83,7 @@ footer a{color:#9fb0c8}
     <a class="btn" href="#apps">Browse the apps</a>
     <a class="btn ghost" href="#tester">Become a tester</a>
   </div>
+  <div id="phone-scene" aria-hidden="true"></div>
 </header>
 
 <div class="grid" id="apps">
@@ -198,5 +200,6 @@ footer a{color:#9fb0c8}
 })();
 document.addEventListener("click",function(e){var a=e.target.closest&&e.target.closest("a.try");if(a){try{gtag("event","select_content",{content_type:"app",item_id:a.href.split("?")[0]});}catch(x){}}});
 </script>
+<script type="module" src="js/phone-scene.js"></script>
 </body>
 </html>
