@@ -68,6 +68,9 @@ button[disabled]{opacity:.6}
 #msg{min-height:22px;margin:4px 0 0;font-size:14px}
 .ok{color:#5eead4}.err{color:#fca5a5}
 .tip{margin:26px 0 0;font-size:14px;color:var(--muted);text-align:center}
+#x-scene{height:clamp(220px,60vw,340px);max-width:420px;margin:0 auto;touch-action:none;user-select:none;-webkit-user-select:none}
+.xtoy{margin-top:40px;text-align:center}
+.xtoy p{margin:0;color:var(--muted);font-size:13px}
 footer{margin-top:34px;text-align:center;color:#7d8ca5;font-size:13px}
 footer a{color:#9fb0c8}
 </style>
@@ -169,6 +172,8 @@ footer a{color:#9fb0c8}
   <p class="note" style="margin:6px 0 0">We only use your email to contact you about testing. Prefer to write instead? <a href="mailto:info@elevex.digital?subject=Tester%20request">info@elevex.digital</a></p>
 </section>
 
+<div class="xtoy"><div id="x-scene" aria-hidden="true"></div><p>Give it a spin.</p></div>
+
 <footer>
   <p>ELEVEX Apps · <a href="https://elevex.digital/?utm_source=elevexapps&amp;utm_medium=hub&amp;utm_campaign=apps">elevex.digital</a></p>
 </footer>
@@ -201,6 +206,7 @@ footer a{color:#9fb0c8}
 })();
 document.addEventListener("click",function(e){var a=e.target.closest&&e.target.closest("a.try");if(a){try{gtag("event","select_content",{content_type:"app",item_id:a.href.split("?")[0]});}catch(x){}}});
 </script>
-<script type="module" src="js/phone-scene.js"></script>
+<script type="module" src="js/apps-entry.js"></script>
+<script type="module" src="js/apps-x-entry.js"></script>
 </body>
 </html>
