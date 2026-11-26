@@ -1,6 +1,6 @@
 # ELEVEX Apps hub (elevexapps.elevex.digital)
 
-Static one-page site: `index.html` + `img/` + `v/`. Replaces the former FreeApps hub (freeapps.elevex.digital).
+Static one-page site: `index.html` + `img/` + `screens/` + `fonts/` + `v/`. Replaces the former FreeApps hub (freeapps.elevex.digital).
 `v/` still holds the TikTok videos and covers that the n8n queues download, so the old hostname keeps serving them.
 
 ## Deploy (same Docker + Caddy + 2-minute cron pattern as before)
