@@ -44,6 +44,21 @@ h1{font-size:clamp(28px,6vw,40px);line-height:1.12;margin:10px 0 12px}
 .btn{display:inline-block;text-decoration:none;font-weight:700;padding:12px 20px;border-radius:999px;border:1px solid var(--electric);background:rgba(59,130,246,.16);color:#dbe8ff}
 .btn.ghost{background:transparent;border-color:var(--line);color:var(--muted)}
 .btn:hover{background:rgba(59,130,246,.28)}
+.featured{margin:34px 0 0;background:var(--panel);border:1px solid #2a6f68;border-radius:24px;padding:22px;display:grid;gap:22px}
+@media(min-width:720px){.featured{grid-template-columns:1fr 250px;align-items:center;padding:28px}}
+.featured .badge{display:inline-block;font-size:12px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:#2dd4bf}
+.featured h2{margin:8px 0 2px;font-size:clamp(26px,5vw,34px);line-height:1.1}
+.featured .tag{margin:0;font-weight:700;color:#2dd4bf}
+.featured p.desc{margin:14px 0;color:#c4d0e3}
+.featured ul{margin:0 0 18px;padding:0;list-style:none;display:grid;gap:8px;font-size:14.5px;color:#d5deee}
+.featured li:before{content:"\2713";color:#2dd4bf;font-weight:800;margin-right:8px}
+.featured .try{display:inline-block;padding:12px 22px;background:#2dd4bf}
+.vid{width:100%;max-width:250px;margin:0 auto}
+.vid video{display:block;width:100%;aspect-ratio:9/16;object-fit:cover;border-radius:20px;border:1px solid var(--line);background:#000}
+.clips{display:flex;flex-wrap:wrap;gap:6px;justify-content:center;margin-top:10px}
+.clips button{padding:7px 12px;font-size:13px;font-weight:700;border-radius:999px;background:transparent;border:1px solid var(--line);color:var(--muted)}
+.clips button[aria-pressed=true]{border-color:#2dd4bf;color:#eef3fb;background:rgba(45,212,191,.12)}
+.more{margin:34px 0 -14px;font-size:12px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);text-align:center}
 .grid{display:grid;gap:14px;margin:34px 0 10px}
 @media(min-width:640px){.grid{grid-template-columns:1fr 1fr}}
 .app{background:var(--panel);border:1px solid var(--line);border-radius:20px;padding:18px;display:flex;flex-direction:column}
@@ -85,21 +100,40 @@ footer a{color:#9fb0c8}
   <h1>Some of the apps we're building.</h1>
   <p class="lead">Try them in your browser and let us know what you think. Your feedback shapes what we build next.</p>
   <div class="cta-row">
-    <a class="btn" href="#apps">Browse the apps</a>
+    <a class="btn" href="#featured">Featured app</a>
+    <a class="btn ghost" href="#apps">Browse the apps</a>
     <a class="btn ghost" href="#tester">Become a tester</a>
   </div>
   <div id="phone-scene" aria-hidden="true"></div>
 </header>
 
-<div class="grid" id="apps">
+<section class="featured" id="featured" aria-labelledby="feat-title">
+  <div>
+    <span class="badge">Featured app</span>
+    <h2 id="feat-title">Travel Safety Watch</h2>
+    <p class="tag">Travel informed</p>
+    <p class="desc">Our most complete app, live today. It follows the weather, official government advice and local news for destinations worldwide, and turns them into clear, calm alerts for each trip.</p>
+    <ul>
+      <li>Weather, official advice and local news in one view</li>
+      <li>Local-language reports translated for you</li>
+      <li>Trip alerts straight to your phone</li>
+      <li>No ads. We never sell your data</li>
+    </ul>
+    <a class="try" href="https://travelsafetywatch.com/?utm_source=elevexapps&utm_medium=hub&utm_campaign=featured">Try Travel Safety Watch</a>
+    <p class="note">Independent. Not a government service. Check official sources. Coming soon to Google Play and the App Store.</p>
+  </div>
+  <div class="vid">
+    <video id="tswv" controls playsinline preload="none" poster="v/tsw01_italy.jpg" aria-label="Travel Safety Watch video"><source src="v/tsw01_italy.mp4" type="video/mp4"></video>
+    <div class="clips" role="group" aria-label="Choose a video">
+      <button type="button" data-c="tsw01_italy" aria-pressed="true">Italy trip</button>
+      <button type="button" data-c="tsw02_world" aria-pressed="false">The whole world</button>
+      <button type="button" data-c="tsw03_news" aria-pressed="false">Local news</button>
+    </div>
+  </div>
+</section>
 
-<article class="app" style="--accent:#2dd4bf">
-  <div class="app-top"><img src="img/apps/travel-safety-watch.webp" alt="" width="56" height="56">
-    <div><h2>Travel Safety Watch</h2><p class="kind">Travel · Safety alerts</p></div></div>
-  <p class="desc">Weather, local news and official travel advice for destinations worldwide, in one calm view.</p>
-  <a class="try" href="https://travelsafetywatch.com/?utm_source=elevexapps&utm_medium=hub&utm_campaign=apps">Try it</a>
-  <p class="note">Independent. Not a government service. Check official sources.</p>
-</article>
+<p class="more">More apps</p>
+<div class="grid" id="apps">
 
 <article class="app" style="--accent:#c6ff3d">
   <div class="app-top"><img src="img/apps/scenzy.webp" alt="" width="56" height="56">
@@ -205,6 +239,12 @@ footer a{color:#9fb0c8}
     });
   });
 })();
+document.querySelectorAll(".clips button").forEach(function(b){b.addEventListener("click",function(){
+  var v=document.getElementById("tswv"),c=b.dataset.c;
+  document.querySelectorAll(".clips button").forEach(function(x){x.setAttribute("aria-pressed",x===b?"true":"false");});
+  v.poster="v/"+c+".jpg";v.innerHTML='<source src="v/'+c+'.mp4" type="video/mp4">';v.load();
+  try{gtag("event","select_content",{content_type:"featured_video",item_id:c});}catch(e){}
+});});
 document.addEventListener("click",function(e){var a=e.target.closest&&e.target.closest("a.try");if(a){try{gtag("event","select_content",{content_type:"app",item_id:a.href.split("?")[0]});}catch(x){}}});
 </script>
 <script type="module" src="js/apps-entry.js?v=slides2"></script>
