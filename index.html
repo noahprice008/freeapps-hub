@@ -82,12 +82,13 @@ section{padding:64px 0}
 .screen{position:relative;aspect-ratio:9/19;border-radius:1.8rem;overflow:hidden;background:#000}
 .screen:before{content:"";position:absolute;left:50%;top:6px;width:28%;height:5px;transform:translateX(-50%);border-radius:99px;background:rgba(0,0,0,.85);z-index:2}
 .screen:after{content:"";position:absolute;inset:0;border-radius:1.8rem;background:linear-gradient(135deg,rgba(255,255,255,.1),transparent 45%);pointer-events:none;z-index:2}
-.track{position:absolute;left:0;right:0;bottom:0;top:18px;display:flex;transition:transform .7s cubic-bezier(.22,1,.36,1)}
-@media(prefers-reduced-motion:reduce){.track{transition:none}}
-.track>*{flex:none;width:100%;height:100%}
+.track{position:absolute;left:0;right:0;bottom:0;top:18px}
+.track>*{position:absolute;inset:0;width:100%;height:100%;backface-visibility:hidden;transition:transform .72s cubic-bezier(.22,1,.36,1),opacity .6s ease}
+.track>*+*{opacity:0}
+@media(prefers-reduced-motion:reduce){.track>*{transition:none}}
 .track img{display:block;object-fit:cover;object-position:top}
-.dots{display:flex;justify-content:center;margin-top:10px}
-.dots button{all:unset;box-sizing:border-box;display:flex;align-items:center;justify-content:center;height:32px;min-width:32px;padding:0 4px;cursor:pointer}
+.dots{display:flex;justify-content:center;align-items:center;margin-top:6px;min-height:44px}
+.dots button{all:unset;box-sizing:border-box;display:flex;align-items:center;justify-content:center;height:44px;min-width:44px;padding:0 4px;cursor:pointer}
 .dots button:focus-visible{outline:2px solid var(--electric);outline-offset:-4px;border-radius:8px}
 .dots i{display:block;height:6px;width:6px;border-radius:99px;background:currentColor;opacity:.25;transition:all .2s}
 .dots button[aria-current=true] i{width:24px;opacity:.7}
@@ -116,21 +117,34 @@ section{padding:64px 0}
 @media(min-width:700px){.grid{grid-template-columns:1fr 1fr}}
 @media(min-width:1024px){.grid{grid-template-columns:repeat(3,1fr);gap:24px}}
 .app{background:#fff;border:1px solid var(--card-line);border-radius:24px;overflow:hidden;display:flex;flex-direction:column;box-shadow:0 1px 2px rgba(10,18,48,.04)}
-.app .stage{padding:26px 0 8px;background:linear-gradient(135deg,color-mix(in srgb,var(--accent) 30%,#fff),color-mix(in srgb,var(--accent) 8%,#fff));color:var(--ink)}
-.app .body{padding:20px 22px 22px;display:flex;flex-direction:column;flex:1}
+.app .stage{padding:26px 0 8px;display:grid;align-content:start;background:linear-gradient(135deg,color-mix(in srgb,var(--accent) 30%,#fff),color-mix(in srgb,var(--accent) 8%,#fff));color:var(--ink)}
+.app .body{padding:20px 22px 22px;display:grid;grid-template-rows:auto 1fr auto minmax(26px,auto);flex:1}
 .app-top{display:flex;gap:12px;align-items:center}
 .app-top img{width:48px;height:48px;border-radius:12px;flex:none;box-shadow:0 0 0 1px rgba(10,18,48,.08)}
 .app h3{font-size:20px;line-height:1.2}
 .kind{margin:2px 0 0;font-size:12px;font-weight:700;letter-spacing:.05em;text-transform:uppercase;color:var(--ink-muted)}
-.app p.desc{margin:14px 0 18px;color:#3c4966;font-size:15px;flex:1}
+.app p.desc{margin:14px 0 18px;color:#3c4966;font-size:15px}
 .app .try{display:flex;align-items:center;justify-content:center;min-height:48px;text-align:center;text-decoration:none;font-weight:800;border-radius:999px;background:var(--ink);color:#fff;padding:0 18px}
 .app .try:hover{background:#17224d}
 .app .try:focus-visible{outline:2px solid var(--blue);outline-offset:3px}
-.app .note{margin:10px 0 0;font-size:12.5px;color:var(--ink-muted)}
-.next{border:2px dashed #c6d2ea;background:transparent;box-shadow:none;justify-content:center;text-align:center;padding:34px 24px;align-items:center}
-.next h3{font-size:22px}
-.next p{margin:10px 0 20px;color:#3c4966}
-.next .try{background:var(--blue)}
+.app .note{margin:9px 0 0;font-size:12.5px;line-height:1.35;color:var(--ink-muted)}
+.next{grid-column:1/-1;border:2px dashed #c6d2ea;background:linear-gradient(135deg,rgba(56,189,248,.08),rgba(198,255,61,.06) 60%,transparent);box-shadow:none}
+.next-in{display:grid;gap:22px;padding:28px 24px;align-items:center}
+@media(min-width:880px){.next-in{grid-template-columns:minmax(0,1.05fr) minmax(0,.95fr) auto;gap:34px;padding:30px 34px}}
+.next h3{font-size:22px;margin:6px 0 0;line-height:1.2}
+.next .next-copy p{margin:10px 0 0;color:#3c4966;font-size:15px;max-width:44ch}
+.next .try{background:var(--blue);width:max-content;padding:0 26px;margin-top:18px}
+.next .try:hover{background:#1668c9}
+.next-perks{list-style:none;margin:0;padding:0;display:grid;gap:11px}
+.next-perks li{display:flex;gap:10px;align-items:flex-start;font-size:14.5px;line-height:1.4;color:#2b3752}
+.next-perks svg{flex:none;margin-top:1px;color:var(--blue)}
+.next-tiles{display:flex;gap:12px;justify-self:start}
+@media(min-width:880px){.next-tiles{justify-self:end}}
+.next-tile{width:62px;height:62px;border-radius:18px;border:2px dashed #b4c5e3;background:rgba(255,255,255,.6);display:grid;place-items:center;color:#7f96bd;animation:nextfloat 5.5s ease-in-out infinite}
+.next-tile:nth-child(2){animation-delay:.9s;transform:translateY(-9px)}
+.next-tile:nth-child(3){animation-delay:1.8s;transform:translateY(5px)}
+@keyframes nextfloat{0%,100%{opacity:.75}50%{opacity:1}}
+@media(prefers-reduced-motion:reduce){.next-tile{animation:none}}
 .tip{margin:32px 0 0;text-align:center;font-size:14px;color:var(--ink-muted)}
 /* tester */
 .tester{background:linear-gradient(160deg,#0f1c35,#0a1230);border-top:1px solid var(--line)}
@@ -211,7 +225,7 @@ footer a:hover{color:#fff}
       <div class="cta-row"><a class="btn teal try" href="https://travelsafetywatch.com/?utm_source=elevexapps&amp;utm_medium=hub&amp;utm_campaign=featured">Try Travel Safety Watch</a></div>
       <p class="note">Independent. Not a government service. Check official sources. Coming soon to Google Play and the App Store.</p>
     </div>
-    <div class="glow" style="color:#eef3fb"><div data-show aria-roledescription="carousel" aria-label="Travel Safety Watch screens"><div class="phone" style="--pw:19rem"><div class="bezel"><div class="screen"><div class="track"><img src="screens/tsw-1.webp" alt="Travel Safety Watch home screen" width="476" height="952" loading="eager" draggable="false"><img src="screens/tsw-2.webp" alt="Destinations to watch, region by region" width="476" height="952" loading="lazy" draggable="false"><img src="screens/tsw-3.webp" alt="Live alerts on the map" width="476" height="952" loading="lazy" draggable="false"></div></div></div></div><div class="dots"></div></div></div>
+    <div class="glow" style="color:#eef3fb"><div data-show data-axis="y" data-every="4200" data-delay="2600" aria-roledescription="carousel" aria-label="Travel Safety Watch screens"><div class="phone" style="--pw:19rem"><div class="bezel"><div class="screen"><div class="track"><img src="screens/tsw-1.webp" alt="Travel Safety Watch home screen" width="476" height="952" loading="eager" draggable="false"><img src="screens/tsw-2.webp" alt="Destinations to watch, region by region" width="476" height="952" loading="lazy" draggable="false"><img src="screens/tsw-3.webp" alt="Live alerts on the map" width="476" height="952" loading="lazy" draggable="false"></div></div></div></div><div class="dots"></div></div></div>
   </div>
 </section>
 
@@ -222,15 +236,15 @@ footer a:hover{color:#fff}
     <p class="sec-sub">Each one runs in your browser. Add it to your home screen to keep it like a regular app.</p>
     <div class="grid">
 <article class="app" style="--accent:#c6ff3d">
-  <div class="stage"><div data-show aria-roledescription="carousel" aria-label="Scenzy screens"><div class="phone" style="--pw:11rem"><div class="bezel"><div class="screen"><div class="track"><img src="screens/scenzy-1.webp" alt="Scenzy live map with scenes and people open to meet" width="476" height="952" loading="lazy" draggable="false"><img src="screens/scenzy-2.webp" alt="A scene card with Still on and Gone buttons" width="476" height="952" loading="lazy" draggable="false"><img src="screens/scenzy-3.webp" alt="An open-to-meet card with signals to send" width="476" height="952" loading="lazy" draggable="false"><img src="screens/scenzy-4.webp" alt="Add a scene in a few taps" width="476" height="952" loading="lazy" draggable="false"><img src="screens/scenzy-5.webp" alt="Who is near you, newest scenes first" width="476" height="952" loading="lazy" draggable="false"></div></div></div></div><div class="dots"></div></div></div>
+  <div class="stage"><div data-show data-axis="x" data-every="3600" data-delay="1500" aria-roledescription="carousel" aria-label="Scenzy screens"><div class="phone" style="--pw:11rem"><div class="bezel"><div class="screen"><div class="track"><img src="screens/scenzy-1.webp" alt="Scenzy live map with scenes and people open to meet" width="476" height="952" loading="lazy" draggable="false"><img src="screens/scenzy-2.webp" alt="A scene card with Still on and Gone buttons" width="476" height="952" loading="lazy" draggable="false"><img src="screens/scenzy-3.webp" alt="An open-to-meet card with signals to send" width="476" height="952" loading="lazy" draggable="false"><img src="screens/scenzy-4.webp" alt="Add a scene in a few taps" width="476" height="952" loading="lazy" draggable="false"><img src="screens/scenzy-5.webp" alt="Who is near you, newest scenes first" width="476" height="952" loading="lazy" draggable="false"></div></div></div></div><div class="dots"></div></div></div>
   <div class="body">
     <div class="app-top"><img src="img/apps/scenzy.webp" alt="" width="48" height="48"><div><h3>Scenzy</h3><p class="kind">Social · Local scenes</p></div></div>
     <p class="desc">See where it's happening. Spot a scene, share it, and see what others nearby are seeing. Built for singles and travellers.</p>
-    <a class="try" href="https://getscenzy.com/?utm_source=elevexapps&amp;utm_medium=hub&amp;utm_campaign=apps">Try Scenzy</a><p class="note">18+. Early version. Feedback welcome.</p>
+    <a class="try" href="https://getscenzy.com/?utm_source=elevexapps&amp;utm_medium=hub&amp;utm_campaign=apps">Try Scenzy</a><p class="note">18+ · Early version</p>
   </div>
 </article>
 <article class="app" style="--accent:#a78bfa">
-  <div class="stage"><div data-show aria-roledescription="carousel" aria-label="MyWall screens"><div class="phone" style="--pw:11rem"><div class="bezel"><div class="screen"><div class="track"><img src="screens/mywall-1.webp" alt="MyWall feed in dark mode with a photo post" width="476" height="952" loading="lazy" draggable="false"><img src="screens/mywall-2.webp" alt="A weekend to-do list on the wall" width="476" height="952" loading="lazy" draggable="false"><img src="screens/mywall-3.webp" alt="A night-out photo post on the wall" width="476" height="952" loading="lazy" draggable="false"><img src="screens/mywall-4.webp" alt="MyWall in light mode" width="476" height="952" loading="lazy" draggable="false"></div></div></div></div><div class="dots"></div></div></div>
+  <div class="stage"><div data-show data-axis="y" data-every="4700" data-delay="2900" aria-roledescription="carousel" aria-label="MyWall screens"><div class="phone" style="--pw:11rem"><div class="bezel"><div class="screen"><div class="track"><img src="screens/mywall-1.webp" alt="MyWall feed in dark mode with a photo post" width="476" height="952" loading="lazy" draggable="false"><img src="screens/mywall-2.webp" alt="A weekend to-do list on the wall" width="476" height="952" loading="lazy" draggable="false"><img src="screens/mywall-3.webp" alt="A night-out photo post on the wall" width="476" height="952" loading="lazy" draggable="false"><img src="screens/mywall-4.webp" alt="MyWall in light mode" width="476" height="952" loading="lazy" draggable="false"></div></div></div></div><div class="dots"></div></div></div>
   <div class="body">
     <div class="app-top"><img src="img/apps/mywall.webp" alt="" width="48" height="48"><div><h3>MyWall</h3><p class="kind">Social · Private wall</p></div></div>
     <p class="desc">Your private social wall. Share moments, plans and daily wins on a feed that is yours alone. Everything stays on your device.</p>
@@ -238,7 +252,7 @@ footer a:hover{color:#fff}
   </div>
 </article>
 <article class="app" style="--accent:#7ff0e0">
-  <div class="stage"><div data-show aria-roledescription="carousel" aria-label="Daywall screens"><div class="phone" style="--pw:11rem"><div class="bezel"><div class="screen"><div class="track"><img src="screens/daywall-3.webp" alt="Daywall work and earnings" width="476" height="952" loading="lazy" draggable="false"><img src="screens/daywall-2.webp" alt="Daywall private wall" width="476" height="952" loading="lazy" draggable="false"><img src="screens/daywall-1.webp" alt="A moment shared from Daywall" width="476" height="952" loading="lazy" draggable="false"></div></div></div></div><div class="dots"></div></div></div>
+  <div class="stage"><div data-show data-axis="mix" data-every="4100" data-delay="4200" aria-roledescription="carousel" aria-label="Daywall screens"><div class="phone" style="--pw:11rem"><div class="bezel"><div class="screen"><div class="track"><img src="screens/daywall-3.webp" alt="Daywall work and earnings" width="476" height="952" loading="lazy" draggable="false"><img src="screens/daywall-2.webp" alt="Daywall private wall" width="476" height="952" loading="lazy" draggable="false"><img src="screens/daywall-1.webp" alt="A moment shared from Daywall" width="476" height="952" loading="lazy" draggable="false"></div></div></div></div><div class="dots"></div></div></div>
   <div class="body">
     <div class="app-top"><img src="img/apps/daywall.webp" alt="" width="48" height="48"><div><h3>Daywall</h3><p class="kind">Productivity · Work and money</p></div></div>
     <p class="desc">Log shifts, see weekly pay and cash flow, and keep your calendar in one place. Your data stays on your device.</p>
@@ -246,22 +260,49 @@ footer a:hover{color:#fff}
   </div>
 </article>
 <article class="app" style="--accent:#f5c542">
-  <div class="stage"><div data-show aria-roledescription="carousel" aria-label="TravelPlay screens"><div class="phone" style="--pw:11rem"><div class="bezel"><div class="screen"><div class="track"><img src="screens/travelplay-1.webp" alt="TravelPlay daily grid" width="476" height="952" loading="lazy" draggable="false"><img src="screens/travelplay-2.webp" alt="TravelPlay tile game" width="476" height="952" loading="lazy" draggable="false"><img src="screens/travelplay-3.webp" alt="TravelPlay word puzzle" width="476" height="952" loading="lazy" draggable="false"></div></div></div></div><div class="dots"></div></div></div>
+  <div class="stage"><div data-show data-axis="x" data-every="5200" data-delay="2100" aria-roledescription="carousel" aria-label="TravelPlay screens"><div class="phone" style="--pw:11rem"><div class="bezel"><div class="screen"><div class="track"><img src="screens/travelplay-1.webp" alt="TravelPlay daily grid" width="476" height="952" loading="lazy" draggable="false"><img src="screens/travelplay-2.webp" alt="TravelPlay tile game" width="476" height="952" loading="lazy" draggable="false"><img src="screens/travelplay-3.webp" alt="TravelPlay word puzzle" width="476" height="952" loading="lazy" draggable="false"></div></div></div></div><div class="dots"></div></div></div>
   <div class="body">
     <div class="app-top"><img src="img/apps/travelplay.webp" alt="" width="48" height="48"><div><h3>TravelPlay</h3><p class="kind">Games · For travellers</p></div></div>
     <p class="desc">Original puzzle and word games for flights, trains and layovers. Works offline once installed.</p>
-    <a class="try" href="https://travelplay.fun/?utm_source=elevexapps&amp;utm_medium=hub&amp;utm_campaign=apps">Try TravelPlay</a><p class="note">18+.</p>
+    <a class="try" href="https://travelplay.fun/?utm_source=elevexapps&amp;utm_medium=hub&amp;utm_campaign=apps">Try TravelPlay</a><p class="note">18+</p>
+  </div>
+</article>
+<article class="app" style="--accent:#ef4444">
+  <div class="stage"><div data-show data-axis="mix" data-every="3900" data-delay="1800" aria-roledescription="carousel" aria-label="Magen Alert screens"><div class="phone" style="--pw:11rem"><div class="bezel"><div class="screen"><div class="track"><img src="screens/magen-1.webp" alt="Magen Alert home screen with the current level" width="476" height="952" loading="lazy" draggable="false"><img src="screens/magen-2.webp" alt="Live alerts as they are published" width="476" height="952" loading="lazy" draggable="false"><img src="screens/magen-3.webp" alt="Alerts for the places you follow" width="476" height="952" loading="lazy" draggable="false"></div></div></div></div><div class="dots"></div></div></div>
+  <div class="body">
+    <div class="app-top"><img src="img/apps/magen-alert.webp" alt="" width="48" height="48"><div><h3>Magen Alert</h3><p class="kind">Safety · Live alerts</p></div></div>
+    <p class="desc">Real-time safety alerts for Jewish communities worldwide. Official sources and local news, checked and published around the clock.</p>
+    <a class="try" href="https://magenalert.com/?utm_source=elevexapps&amp;utm_medium=hub&amp;utm_campaign=apps">Try Magen Alert</a><p class="note">Not a government service. Check official sources.</p>
   </div>
 </article>
 <article class="app" style="--accent:#f0a58f">
-  <div class="stage"><div data-show aria-roledescription="carousel" aria-label="My Ikigai Map screens"><div class="phone" style="--pw:11rem"><div class="bezel"><div class="screen"><div class="track"><img src="screens/ikigai-1.webp" alt="My Ikigai Map start screen" width="476" height="952" loading="lazy" draggable="false"><img src="screens/ikigai-2.webp" alt="Ikigai circles to fill in" width="476" height="952" loading="lazy" draggable="false"><img src="screens/ikigai-3.webp" alt="Ikigai result" width="476" height="952" loading="lazy" draggable="false"></div></div></div></div><div class="dots"></div></div></div>
+  <div class="stage"><div data-show data-axis="fade" data-every="4400" data-delay="3500" aria-roledescription="carousel" aria-label="My Ikigai Map screens"><div class="phone" style="--pw:11rem"><div class="bezel"><div class="screen"><div class="track"><img src="screens/ikigai-1.webp" alt="My Ikigai Map start screen" width="476" height="952" loading="lazy" draggable="false"><img src="screens/ikigai-2.webp" alt="Ikigai circles to fill in" width="476" height="952" loading="lazy" draggable="false"><img src="screens/ikigai-3.webp" alt="Ikigai result" width="476" height="952" loading="lazy" draggable="false"></div></div></div></div><div class="dots"></div></div></div>
   <div class="body">
     <div class="app-top"><img src="img/apps/ikigai.webp" alt="" width="48" height="48"><div><h3>My Ikigai Map</h3><p class="kind">Tools · Self-discovery</p></div></div>
     <p class="desc">A guided, interactive map of passion, skill, need and pay. Answer four questions and get a result you can share.</p>
     <a class="try" href="https://ikigai.elevex.digital/?utm_source=elevexapps&amp;utm_medium=hub&amp;utm_campaign=apps">Try My Ikigai Map</a>
   </div>
 </article>
-<article class="app next"><h3>Help shape what's next</h3><p>Tell us which apps you'd like to see, and test them early on Google Play.</p><a class="try" href="#tester">Become a tester</a></article>
+<article class="app next">
+  <div class="next-in">
+    <div class="next-copy">
+      <p class="eyebrow">Coming next</p>
+      <h3>Help shape what we build</h3>
+      <p>We build these in the open. Tell us which apps you'd like to see, and try them before anyone else.</p>
+      <a class="try" href="#tester">Become a tester</a>
+    </div>
+    <ul class="next-perks">
+      <li><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg><span>Try new apps before they are public</span></li>
+      <li><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg><span>Tell us which app we should build next</span></li>
+      <li><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg><span>Help us fix things before launch day</span></li>
+    </ul>
+    <div class="next-tiles" aria-hidden="true">
+      <span class="next-tile"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg></span>
+      <span class="next-tile"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v4M12 17v4M3 12h4M17 12h4M6 6l2.5 2.5M15.5 15.5 18 18M18 6l-2.5 2.5M8.5 15.5 6 18"/></svg></span>
+      <span class="next-tile"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9.2 9a3 3 0 1 1 4 2.8c-.8.3-1.2 1-1.2 1.8v.4"/><path d="M12 18h.01"/></svg></span>
+    </div>
+  </div>
+</article>
     </div>
     <p class="tip">Tip: open an app, then use your browser's “Add to Home Screen”.</p>
   </div>
@@ -340,36 +381,97 @@ footer a:hover{color:#fff}
 document.addEventListener("click",function(e){var a=e.target.closest&&e.target.closest("a.try");if(a){try{gtag("event","select_content",{content_type:"app",item_id:a.href.split("?")[0]});}catch(x){}}});
 </script>
 <script>
+/* Phone slideshows. Each one keeps its own rhythm and its own direction
+   (sideways, upward, or a soft cross-fade) so no two cards ever change together. */
 (function(){
   var reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  var MOVE = 780; // keep in step with the transition in .track>*
+
   document.querySelectorAll("[data-show]").forEach(function(el){
-    var track = el.querySelector(".track"), n = track.children.length, i = 0, paused = false, inView = false;
-    var dots = el.querySelector(".dots");
-    function go(k){
-      i = (k + n) % n; track.style.transform = "translateX(-" + (i * 100) + "%)";
+    var track = el.querySelector(".track");
+    if(!track) return;
+    var kids = Array.prototype.slice.call(track.children), n = kids.length;
+    if(!n) return;
+    var dots  = el.querySelector(".dots");
+    var axis  = el.getAttribute("data-axis") || "x";
+    var every = parseInt(el.getAttribute("data-every"), 10) || 4000;
+    var delay = parseInt(el.getAttribute("data-delay"), 10) || 0;
+    var i = 0, step = 0, paused = false, inView = false, moving = false, timer = 0;
+
+    // "mix" alternates sideways and upward, so one phone shows both.
+    function axisNow(){ return axis === "mix" ? (step % 2 ? "y" : "x") : axis; }
+
+    // slot: -1 just left, 0 on screen, 1 waiting off screen
+    function place(node, slot, ax, instant){
+      if(instant) node.style.transition = "none";
+      if(ax === "fade"){
+        node.style.transform = slot === 0 ? "scale(1)" : "scale(" + (slot < 0 ? 0.985 : 1.04) + ")";
+        node.style.opacity = slot === 0 ? "1" : "0";
+      } else {
+        var d = slot * 100;
+        node.style.transform = ax === "y" ? "translate3d(0," + d + "%,0)" : "translate3d(" + d + "%,0,0)";
+        node.style.opacity = "1";
+      }
+      node.style.zIndex = slot === 0 ? "1" : "0";
+      if(instant){ void node.offsetWidth; node.style.transition = ""; }
+    }
+    function mark(){
+      kids.forEach(function(k, j){ k.setAttribute("aria-hidden", j === i ? "false" : "true"); });
       if(dots) dots.querySelectorAll("button").forEach(function(b, j){ b.setAttribute("aria-current", j === i ? "true" : "false"); });
     }
+    function reset(ax){ kids.forEach(function(k, j){ if(j !== i) place(k, 1, ax, true); }); }
+
+    function go(k){
+      k = ((k % n) + n) % n;
+      if(k === i || moving || n < 2) return;
+      var ax = axisNow(), cur = kids[i], nxt = kids[k];
+      place(nxt, 1, ax, true);     // park it just off screen, no animation
+      place(cur, -1, ax, false);   // and slide the two of them across together
+      place(nxt, 0, ax, false);
+      i = k; step++; moving = true; mark();
+      window.setTimeout(function(){ moving = false; reset(axisNow()); }, MOVE);
+    }
+
+    // first paint
+    place(kids[0], 0, axisNow(), true);
+    reset(axisNow());
+    mark();
+
     if(dots && n > 1){
       for(var j = 0; j < n; j++){ (function(j){
         var b = document.createElement("button"); b.type = "button";
         b.setAttribute("aria-label", "Show screen " + (j + 1) + " of " + n); b.innerHTML = "<i></i>";
         b.addEventListener("click", function(){ go(j); }); dots.appendChild(b);
       })(j); }
-      go(0);
+      mark();
     }
-    if(n < 2) return;
+    if(n < 2 || reduce) return;
+
     el.addEventListener("mouseenter", function(){ paused = true; });
     el.addEventListener("mouseleave", function(){ paused = false; });
-    el.addEventListener("focusin", function(){ paused = true; });
-    el.addEventListener("focusout", function(){ paused = false; });
+    el.addEventListener("focusin",    function(){ paused = true; });
+    el.addEventListener("focusout",   function(){ paused = false; });
+    document.addEventListener("visibilitychange", function(){
+      if(document.hidden){ window.clearTimeout(timer); timer = 0; } else { after(every); }
+    });
+
+    // A fresh timer each time, with a little give either side of the set pace. Fixed
+    // intervals eventually fall into step with each other; these never quite can.
+    function after(ms){ window.clearTimeout(timer); timer = window.setTimeout(run, ms); }
+    function run(){
+      if(inView && !paused && !document.hidden) go(i + 1);
+      after(every + (Math.random() * 900 - 450));
+    }
+
     if("IntersectionObserver" in window){
-      new IntersectionObserver(function(e){ inView = e[0].isIntersecting; }, {threshold: .3}).observe(el);
+      new IntersectionObserver(function(e){ inView = !!(e[0] && e[0].isIntersecting); }, {threshold: .3}).observe(el);
     } else { inView = true; }
-    if(!reduce) setInterval(function(){ if(inView && !paused) go(i + 1); }, 3200);
+
+    after(delay); // each phone makes its first change at its own moment
   });
 })();
 </script>
-<script type="module" src="js/apps-entry.js?v=slides3"></script>
-<script type="module" src="js/apps-x-entry.js?v=slides3"></script>
+<script type="module" src="js/apps-entry.js?v=slides4"></script>
+<script type="module" src="js/apps-x-entry.js?v=slides4"></script>
 </body>
 </html>
